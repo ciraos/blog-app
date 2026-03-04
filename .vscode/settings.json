@@ -8,12 +8,13 @@
     "editor.formatOnSaveMode": "file",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.sortOrder": "type",
     "files.associations": {
         "mdx": "markdown",
         "ts": "typescriptreact"
     },
     "files.autoSave": "onFocusChange",
-    "explorer.sortOrder": "type",
+    "terminal.integrated.fontSize": 12,
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "catppuccin-mocha"
 }
