@@ -6,15 +6,13 @@ export default function AdminLayout({ children }: Readonly<{ children: React.Rea
     return (
         <html lang="zh-CN">
             <body>
-                <div id="CIRAOS">
-                    <SidebarProvider>
-                        <AppSidebar />
-                        <main>
-                            <SidebarTrigger />
-                            {children}
-                        </main>
-                    </SidebarProvider>
-                </div>
+                <SidebarProvider id="CIRAOS">
+                    <AppSidebar />
+                    <main>
+                        <SidebarTrigger />
+                        {children}
+                    </main>
+                </SidebarProvider>
             </body>
         </html>
     );

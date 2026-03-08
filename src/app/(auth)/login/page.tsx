@@ -62,7 +62,7 @@ export default function Login() {
                     <Button type="submit" className="w-full">
                         登录
                     </Button>
-                    <Button disabled variant="outline" className="w-full">
+                    <Button className="w-full cursor-not-allowed" variant="outline">
                         通过 Google 登录
                     </Button>
                 </CardFooter>
