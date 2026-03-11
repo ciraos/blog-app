@@ -39,7 +39,7 @@ export default async function Home() {
     <>
       <h2 style={{ marginBottom: "30px", fontSize: "1.6rem" }}>最新文章</h2>
 
-      <ul className="post-ist">
+      <ul className="post-list">
         {postList.map((post, index) => (
           <li key={index} className="post-item">
             <h3 className="post-title">

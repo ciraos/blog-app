@@ -125,18 +125,21 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .post-item {
+    @apply bg-accent-foreground;
+  }
 }
 
 /*! 通用样式 */
 body {
   font-family: Inter, sans-serif;
   line-height: 1.6;
-  /* color: #333; */
 }
 
 .container {
   max-width: 800px;
-  /* 最佳阅读宽度 */
+
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -155,12 +158,12 @@ body {
 }
 
 /*!!  */
-.btli {
-  float: left;
-  width: 60px;
-  line-height: 40px;
-  text-align: center;
+.nav {
+  display: flex;
+  justify-content: space-between;
 }
+
+/* .navlist {} */
 
 .navlist a {
   color: #000;
@@ -170,6 +173,13 @@ body {
 .navlist a:hover {
   /* background: #666; */
   color: darkcyan;
+}
+
+.btli {
+  float: left;
+  width: 60px;
+  line-height: 40px;
+  text-align: center;
 }
 
 .droplist {
@@ -191,7 +201,7 @@ body {
   min-height: 80vh;
 }
 
-/* 列表流条目样式（核心） */
+/*! 列表流条目样式（核心） */
 .post-list {
   list-style: none;
 }
@@ -225,7 +235,11 @@ body {
 }
 
 .post-excerpt {
+  height: 50px;
+  overflow: hidden;
   color: #444;
+  font-size: 14px;
+  text-indent: 18px;
 }
 
 /*! 页脚样式 */
@@ -237,11 +251,6 @@ body {
   font-size: 0.9rem;
   text-align: center;
 }
-
-/*! */
-@media (prefers-color-scheme: light) {}
-
-@media (prefers-color-scheme: dark) {}
 
 /*! */
 @media screen and (max-width: 768px) {}

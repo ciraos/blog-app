@@ -15,12 +15,13 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
       lang="zh-CN"
       suppressHydrationWarning
     >
+      {/* <head /> */}
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
-          disableTransitionOnChange={false}
-          enableColorScheme
+          disableTransitionOnChange
+          // enableColorScheme
           enableSystem
         >
           <div id="CIRAOS">
@@ -34,18 +35,30 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
 
             <header className="header">
               <div className="container">
-                <h1 className="logo">我的博客</h1>
-                <nav>
+                <h1 className="logo">葱苓小筑</h1>
+                <nav className="nav">
                   <ul className="navlist">
                     <li className="btli"><Link href="/">首页</Link></li>
-                    <li className="btli"><Link href="/">文章</Link>
+                    <li className="btli"><Link href="#">文章</Link>
                       <ul className="droplist">
-                        <li><Link href="/">时间轴</Link></li>
-                        <li><Link href="/">分类</Link></li>
-                        <li><Link href="/">标签</Link></li>
+                        <li><Link href="/archives">时间轴</Link></li>
+                        <li><Link href="/categories">分类</Link></li>
+                        <li><Link href="/tags">标签</Link></li>
                       </ul>
                     </li>
-                    <li className="btli"><Link href="/">友联</Link></li>
+                    <li className="btli"><Link href="#">友联</Link>
+                      <ul className="droplist">
+                        <li>
+                          <Link href="/link">友链</Link>
+                        </li>
+                        <li>
+                          <Link href="/fcircle"></Link>
+                        </li>
+                        <li>
+                          <Link href="/talk"></Link>
+                        </li>
+                      </ul>
+                    </li>
                   </ul>
                   <ModeToggle />
                 </nav>
