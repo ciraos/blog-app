@@ -2,7 +2,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -15,8 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+// import { toast } from "sonner";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
@@ -43,14 +41,17 @@ export default function LoginPage() {
             // console.log(data);
 
             if (data.success) {
+                // toast.success("登录成功！即将跳转至仪表盘！", { position: "top-right" });
                 router.push("/admin/dashboard");
                 // router.refresh();
             } else {
                 alert("登录失败，请检查用户名或密码");
+                // toast.error("登录失败，请检查用户名或密码", { position: "top-right" });
             }
         } catch (error) {
             console.error("Login request failed:", error);
             alert("网络异常，请稍后再试");
+            // toast.error("网络异常，请稍后再试", { position: "top-right" });
         } finally {
             setLoading(false);
         }
@@ -78,7 +79,7 @@ export default function LoginPage() {
                                 <Input
                                     id="email"
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="请输入您的邮箱····"
+                                    placeholder="请输入您的邮箱..."
                                     required
                                     type="email"
                                     value={email}
@@ -102,7 +103,12 @@ export default function LoginPage() {
 
                         {error && <p className="text-sm text-center text-destructive">{error}</p>}
 
-                        <Button type="submit" className="w-full" disabled={loading}>
+                        <Button
+                            className="w-full bg-blue-400"
+                            disabled={loading}
+                            // onClick={() => toast.success("正在登录中...", { position: "top-right" })}
+                            type="submit"
+                        >
                             {loading ? "登录中..." : "登录"}
                         </Button>
                     </form>

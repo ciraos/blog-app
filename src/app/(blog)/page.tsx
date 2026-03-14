@@ -6,7 +6,7 @@ import {
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
+  // PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
@@ -25,7 +25,7 @@ async function getSiteConfig() {
     const data = (await res.json()) as SiteConfigResponse;
     return data.data;
   } catch (error) {
-    return { APP_NAME: "博客", ICON_URL: "/favicon.ico" };
+    return { APP_NAME: "博客", ICON_URL: "/favicon.ico", error };
   }
 }
 

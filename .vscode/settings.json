@@ -14,6 +14,12 @@
         "ts": "typescriptreact"
     },
     "files.autoSave": "onFocusChange",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
     "terminal.integrated.fontSize": 12,
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.iconTheme": "catppuccin-mocha"

@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
     Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarGroup,
+    // SidebarContent,
+    // SidebarFooter,
+    // SidebarGroup,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,

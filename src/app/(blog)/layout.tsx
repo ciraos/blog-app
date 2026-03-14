@@ -4,6 +4,7 @@ import NextTopLoader from "nextjs-toploader";
 import "../globals.css";
 import "../page-content.css";
 import { ThemeProvider } from "@/components/theme-provider";
+// import AppCalendar from "@/components/app-calendar";
 import { ModeToggle } from "@/components/buttons/modetoggle";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -67,6 +68,8 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
 
             <main className="main container">
               {children}
+              {/* <div className="my-5 border-t"></div> */}
+              {/* <AppCalendar /> */}
             </main>
 
             <footer className="footer">
