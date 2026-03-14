@@ -119,15 +119,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  .post-item {
-    @apply bg-accent-foreground;
+    @apply border-border;
   }
 }
 
@@ -235,7 +227,7 @@ body {
 }
 
 .post-excerpt {
-  height: 50px;
+  /* height: auto; */
   overflow: hidden;
   color: #444;
   font-size: 14px;

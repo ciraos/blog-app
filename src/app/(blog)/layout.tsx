@@ -21,7 +21,7 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
           attribute="class"
           defaultTheme="system"
           disableTransitionOnChange
-          // enableColorScheme
+          enableColorScheme
           enableSystem
         >
           <div id="CIRAOS">
@@ -62,7 +62,6 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
                   </ul>
                   <ModeToggle />
                 </nav>
-
               </div>
             </header>
 

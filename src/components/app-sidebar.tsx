@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/buttons/logout";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -39,6 +40,8 @@ export function AppSidebar() {
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
+
+            <LogoutButton />
 
         </Sidebar>
     )

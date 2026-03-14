@@ -17,10 +17,8 @@ export default function proxy(req: NextRequest) {
     }
 
     //! 场景 2: 有 token
-    //! 优化：使用 else 分支，避免冗余判断
     else {
         //?? 场景 2.1 在登录页时重定向到仪表板
-        //? 优化：使用严格相等代替正则匹配
         if (pathname === '/login') {
             return NextResponse.redirect(new URL('/admin/dashboard', req.url));
         }
@@ -28,7 +26,5 @@ export default function proxy(req: NextRequest) {
 }
 
 export const config = {
-    matcher: [
-        '/((?!_next/static|_next/image|favicon.ico).*)'
-    ]
+    matcher: []
 }

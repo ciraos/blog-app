@@ -10,6 +10,8 @@ export function DELETE() {
         { status: 200 }
     );
 
+    // console.log(res);
+
     res.cookies.set("token", "", { maxAge: 0 });
     res.cookies.set("refresh_token", "", { maxAge: 0 });
 

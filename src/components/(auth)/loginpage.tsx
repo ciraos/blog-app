@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-
 import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -31,29 +31,26 @@ export default function LoginPage() {
         setError("");
 
         try {
-            const res = await fetch(`${baseUrl}/auth/login`, {
+            const res = await fetch(`/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
 
+            if (!res.ok) throw new Error(`网络错误，请稍后再试：${res.status}`);
+
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
 
-            if (res.ok && data.code === 0) {
-                const { accessToken, refreshToken } = data.data;
-
-                // ✅ 关键：存进 cookie，让中间件能读到
-                document.cookie = `token=${accessToken}; path=/; max-age=86400; SameSite=Lax`;
-                document.cookie = `refreshToken=${refreshToken}; path=/; max-age=2592000; SameSite=Lax`;
-
+            if (data.success) {
                 router.push("/admin/dashboard");
-                router.refresh();
+                // router.refresh();
             } else {
-                throw new Error(data.message || "登录失败");
+                alert("登录失败，请检查用户名或密码");
             }
-        } catch (err: any) {
-            setError(err.message);
+        } catch (error) {
+            console.error("Login request failed:", error);
+            alert("网络异常，请稍后再试");
         } finally {
             setLoading(false);
         }
