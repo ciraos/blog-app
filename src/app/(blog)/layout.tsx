@@ -3,9 +3,11 @@ import Link from "next/link";
 import NextTopLoader from "nextjs-toploader";
 import "../globals.css";
 import "../page-content.css";
+
 import { ThemeProvider } from "@/components/theme-provider";
 // import AppCalendar from "@/components/app-calendar";
 import { ModeToggle } from "@/components/buttons/modetoggle";
+import RightSide from "@/components/(blog)/rightside";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,6 +78,8 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
               <Link className="hover:underline" href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">皖ICP备2023018992号-1</Link>
               <p>宝剑锋从磨砺出，梅花香自苦寒来。</p>
             </footer>
+
+            <RightSide />
 
           </div>
         </ThemeProvider>
