@@ -10,18 +10,9 @@ const nextConfig: NextConfig = {
   distDir: ".next",
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "blog.ciraos.top",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "files.seeusercontent.com",
-        port: "",
-        pathname: "/**",
-      },
+      { protocol: "https", hostname: "blog.ciraos.top", port: "", pathname: "/**", },
+      { protocol: "https", hostname: "files.seeusercontent.com", port: "", pathname: "/**", },
+      { protocol: "https", hostname: "upload-bbs.miyoushe.com", port: "", pathname: "/**", }
     ]
   },
   output: "standalone",

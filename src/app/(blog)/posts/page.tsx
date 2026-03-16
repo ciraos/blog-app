@@ -19,7 +19,7 @@ const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 async function getSiteConfig() {
     try {
         const res = await fetch(`${baseUrl}/public/site-config`, {
-            next: { revalidate: 3600 },
+            next: { revalidate: 60 * 60 },
         });
         if (!res.ok) throw new Error("获取配置失败！");
         const data = (await res.json()) as SiteConfigResponse;
@@ -32,7 +32,7 @@ async function getSiteConfig() {
 export async function generateMetadata(): Promise<Metadata> {
     const config = await getSiteConfig();
     return {
-        title: `${config.APP_NAME} | 所有文章`,
+        title: `${config.APP_NAME} | 首页`,
         icons: { icon: config.ICON_URL },
     };
 }

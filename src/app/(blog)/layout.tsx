@@ -5,13 +5,29 @@ import "../globals.css";
 import "../page-content.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
-// import AppCalendar from "@/components/app-calendar";
 import { ModeToggle } from "@/components/buttons/modetoggle";
 import RightSide from "@/components/(blog)/rightside";
+import { SiteConfigResponse } from "@/types/site-config";
 
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 const inter = Inter({ subsets: ["latin"] });
 
-export default function BlogLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+async function getSiteConfig() {
+  try {
+    const res = await fetch(`${baseUrl}/public/site-config`, {
+      next: { revalidate: 60 * 60 },
+    });
+    if (!res.ok) throw new Error("获取配置失败！");
+    const data = (await res.json()) as SiteConfigResponse;
+    console.log(data);
+    return data.data;
+  } catch (error) {
+    return { APP_NAME: "博客", ICON_URL: "/favicon.ico", error };
+  }
+}
+
+export default async function BlogLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+  const config = await getSiteConfig();
 
   return (
     <html
@@ -38,18 +54,18 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
 
             <header className="header">
               <div className="container">
-                <h1 className="logo">葱苓小筑</h1>
+                <Link href="/" className="logo font-semibold">葱苓小筑</Link>
                 <nav className="nav">
                   <ul className="navlist">
-                    <li className="btli"><Link href="/">首页</Link></li>
-                    <li className="btli"><Link href="#">文章</Link>
+                    {/* <li className="btli"><Link href="/">首页</Link></li> */}
+                    <li className="btli"><Link href="/posts">文章</Link>
                       <ul className="droplist">
                         <li><Link href="/archives">时间轴</Link></li>
                         <li><Link href="/categories">分类</Link></li>
                         <li><Link href="/tags">标签</Link></li>
                       </ul>
                     </li>
-                    <li className="btli"><Link href="#">友联</Link>
+                    <li className="btli"><div>友联</div>
                       <ul className="droplist">
                         <li>
                           <Link href="/link">友链</Link>
@@ -63,7 +79,7 @@ export default function BlogLayout({ children }: Readonly<{ children: React.Reac
                       </ul>
                     </li>
                   </ul>
-                  <ModeToggle />
+                  {/* <ModeToggle /> */}
                 </nav>
               </div>
             </header>

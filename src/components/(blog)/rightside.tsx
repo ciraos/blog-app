@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
     Tooltip,
@@ -16,8 +16,10 @@ import {
 } from "lucide-react";
 
 export default function RightSide() {
-    const [open, setOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
+    const [open, setOpen] = useState(false);
+    const isHomePage = pathname === "/";
     const isPostPage = pathname.startsWith("/posts/");
 
     return (
@@ -35,7 +37,7 @@ export default function RightSide() {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button size="icon" variant="outline">
+                            <Button size="icon" variant="outline" onClick={() => router.refresh()}>
                                 <RefreshCwIcon className="w-4 h-4" />
                             </Button>
                         </TooltipTrigger>
@@ -44,16 +46,17 @@ export default function RightSide() {
                 </TooltipProvider>
 
                 {/* 评论按钮 */}
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button size="icon" variant="outline">
-                                <MessageSquareIcon className="w-4 h-4" />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent side="left">评论</TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                {isHomePage ? (<></>)
+                    : (<TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button size="icon" variant="outline">
+                                    <MessageSquareIcon className="w-4 h-4" />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent side="left">评论</TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>)}
 
                 {/* 目录按钮 */}
                 {isPostPage && (

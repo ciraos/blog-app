@@ -4,7 +4,7 @@ import moment from "moment";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
+  // PaginationEllipsis,
   PaginationItem,
   // PaginationLink,
   PaginationNext,
@@ -96,10 +96,10 @@ export default async function Home({
               <span className="px-3 py-1 border rounded opacity-50">上一页</span>
             )}
 
-            <span className="text-sm">{currentPage} /{totalPages}</span>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
+            <span className="text-sm">{currentPage}/{totalPages}</span>
+            <span className="text-sm"></span>
+
+            {/* <PaginationItem><PaginationEllipsis /></PaginationItem> */}
 
             {currentPage < totalPages ? (
               <PaginationItem>
@@ -108,6 +108,7 @@ export default async function Home({
             ) : (
               <span className="px-3 py-1 border rounded opacity-50">下一页</span>
             )}
+
           </PaginationContent>
         </Pagination>
       )}
