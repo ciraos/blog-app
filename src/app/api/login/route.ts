@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
+
         if (!baseUrl) {
             return NextResponse.json(
                 { success: false, message: "服务器配置错误" },

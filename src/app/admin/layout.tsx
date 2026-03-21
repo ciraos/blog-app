@@ -10,7 +10,7 @@ export default function AdminLayout({ children }: Readonly<{ children: React.Rea
                     <AppSidebar />
                     <main>
                         <SidebarTrigger />
-                        {children}
+                        <div className="py-3 px-5">{children}</div>
                     </main>
                 </SidebarProvider>
             </body>
