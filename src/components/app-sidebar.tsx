@@ -39,7 +39,7 @@ async function getSiteConfigs() {
         const i = await fetch(`${baseUrl}/public/site-config`);
         if (!i.ok) throw new Error("获取配置失败！");
         const data = (await i.json()) as SiteConfigResponse;
-        console.log(data);
+        // console.log(data);
         return data.data;
     } catch (error) {
         // return { APP_NAME: "博客", ICON_URL: "/favicon.ico", error };

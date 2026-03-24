@@ -16,6 +16,16 @@ import {
 } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -23,6 +33,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Field, FieldGroup } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { SiteConfigResponse } from "@/types/site-config";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -57,7 +70,7 @@ export default async function BlogLayout({ children }: Readonly<{ children: Reac
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           disableTransitionOnChange
           enableColorScheme
           enableSystem
@@ -73,9 +86,10 @@ export default async function BlogLayout({ children }: Readonly<{ children: Reac
 
             <header className="header">
               <div className="container">
-                <Link href="/" className="logo font-semibold">葱苓小筑</Link>
+                <div className="logo">葱苓小筑</div>
                 <nav className="nav flex items-center justify-start">
                   <ul className="navlist">
+                    <li className="btli"><Link href="/">首页</Link></li>
                     <li className="btli"><Link href="/posts">文章</Link>
                       <ul className="droplist">
                         <li><Link href="/archives">时间轴</Link></li>
@@ -96,7 +110,7 @@ export default async function BlogLayout({ children }: Readonly<{ children: Reac
                         </li>
                       </ul>
                     </li>
-                    <ModeToggle />
+                    {/* <ModeToggle /> */}
                   </ul>
                   {/* <div className="flex items-center justify-around gap-1"> */}
                   {isLoggedin ? (
@@ -120,12 +134,38 @@ export default async function BlogLayout({ children }: Readonly<{ children: Reac
                       </DropdownMenuContent>
                     </DropdownMenu>
                   ) : (
-                    <Link
-                      className="py-1 px-2 hover:bg-[#39c5bb] hover:rounded-lg"
-                      href="/login"
-                    >
-                      登录/注册
-                    </Link>
+                    <Dialog>
+                      <form>
+                        <DialogTrigger asChild>
+                          <Button variant="outline">登录/注册</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-sm">
+                          <DialogHeader>
+                            <DialogTitle>Edit profile</DialogTitle>
+                            <DialogDescription>
+                              Make changes to your profile here. Click save when you&apos;re
+                              done.
+                            </DialogDescription>
+                          </DialogHeader>
+                          <FieldGroup>
+                            <Field>
+                              <Label htmlFor="name-1">Email</Label>
+                              <Input id="name-1" name="email" defaultValue="" />
+                            </Field>
+                            <Field>
+                              <Label htmlFor="username-1">Password</Label>
+                              <Input id="username-1" name="password" defaultValue="" />
+                            </Field>
+                          </FieldGroup>
+                          <DialogFooter>
+                            <DialogClose asChild>
+                              <Button variant="outline">Cancel</Button>
+                            </DialogClose>
+                            <Button type="submit">Save changes</Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </form>
+                    </Dialog>
                   )}
                 </nav>
               </div>
